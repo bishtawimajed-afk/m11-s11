@@ -1,6 +1,6 @@
 # Latency Profile Report
 
-![Latency vs Load](charts\latency-vs-load.png)
+![Latency vs Load](charts/latency-vs-load.png)
 
 ## Results Table
 

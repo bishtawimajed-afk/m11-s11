@@ -1,5 +1,3 @@
-"""Generate the latency-profile report + chart from `load_generator.py` output."""
-
 from __future__ import annotations
 
 import argparse
@@ -39,9 +37,12 @@ def render_chart(results: list[dict[str, Any]], chart_path: str) -> None:
 
 def render_report(results: list[dict[str, Any]], chart_relpath: str, report_path: str) -> None:
     """Write the one-page Markdown report."""
+    # التأكد من استخدام '/' في رابط الصورة ليقبلها الـ Markdown في أنظمة لينكس
+    web_friendly_path = chart_relpath.replace(os.sep, '/')
+    
     with open(report_path, "w") as f:
         f.write("# Latency Profile Report\n\n")
-        f.write(f"![Latency vs Load]({chart_relpath})\n\n")
+        f.write(f"![Latency vs Load]({web_friendly_path})\n\n")
         
         f.write("## Results Table\n\n")
         f.write("| load_level | p50 | p95 | p99 | error_rate |\n")
